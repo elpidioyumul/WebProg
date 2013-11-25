@@ -1,0 +1,9 @@
+<?php
+$pasok = mysql_connect("localhost","root","") or die("Mahina signal");
+mysql_select_db("guestbook_db",$pasok) or die("Hindi Makapasok!!!");
+
+$id = $_GET['id'];
+
+    mysql_query("delete from message where id='".$id."'");
+    echo "<script>alert('Record Deleted');window.location.href='view.php';</script>";
+?> 
