@@ -1,0 +1,35 @@
+<?php 
+	mysql_connect('localhost','root');
+	mysql_select_db("guestbook_db");
+
+	$name = $_POST["name"];
+	$email = $_POST["email"];
+	$message = $_POST["message"];	
+ 
+
+	$query = "INSERT INTO `message`( `name`, `email`, `message`, `date_posted`) VALUES ('$name', '$email', '$message', CURRENT_DATE)";
+	$result = mysql_query($query);
+	echo "<script>alert('Record saved '); window.location.href = 'view.php'; </script>";
+
+	function approved($var,$id){
+		$query = "UPDATE message SET is_approve = '{$var}' WHERE id = '{$id}' ";
+		$result = mysql_query($query);
+		return $result;
+		
+	}
+
+	function reject($var,$id){
+		$query = "UPDATE message SET is_approve = '{$var}' WHERE id = '{$id}' ";
+		$result = mysql_query($query);
+		return $result;
+		
+	}
+
+
+ ?>
+
+
+
+
+
+ 
